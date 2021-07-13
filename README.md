@@ -5,7 +5,7 @@
 - Clone the repository `git clone https://github.com/lucasstarsz/fastj-groovy-template`
 - Or download from https://github.com/lucasstarsz/fastj-groovy-template/releases/latest
 
-_Note: this project uses Java 16 and Gradle 7._
+_Note: this project uses Java 15 and Gradle 7._
 
 ## Running the Program
 

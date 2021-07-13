@@ -30,6 +30,7 @@ _Note: this project uses Java 15 and Gradle 7._
    ./gradlew jpackage 
    ```
 3. The executable and installer files will be found in `build/jpackage`.
+
 _Having trouble using `gradlew`? Read [this][Terminals Are Different]._
 
 

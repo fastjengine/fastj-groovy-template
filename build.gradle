@@ -38,7 +38,7 @@ repositories.maven {
 repositories.mavenCentral()
 
 /* The dependency for FastJ, the game engine this template depends on. */
-dependencies.implementation('io.github.lucasstarsz.fastj:fastj-library:1.5.0-SNAPSHOT')
+dependencies.implementation('io.github.lucasstarsz.fastj:fastj-library:1.5.0-SNAPSHOT-2')
 /* The dependency for the Groovy programming language. */
 dependencies.implementation('org.codehaus.groovy:groovy:3.0.4')
 

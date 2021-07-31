@@ -42,9 +42,6 @@ dependencies.implementation('io.github.lucasstarsz.fastj:fastj-library:1.5.0-SNA
 /* The dependency for the Groovy programming language. */
 dependencies.implementation('org.codehaus.groovy:groovy:3.0.4')
 
-sourceCompatibility = 15
-compileGroovy.targetCompatibility = 15
-
 /* Here, we specify where the main entrypoint of the project.
  * Feel free to change this as needed. */
 application.getMainClass().set('tech.fastj.template.Game')

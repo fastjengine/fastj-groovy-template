@@ -39,11 +39,11 @@ repositories.maven {
 repositories.mavenCentral()
 
 /* The dependency for FastJ, the game engine this template depends on. */
-dependencies.implementation('com.github.fastjengine:FastJ:1.6.0')
+dependencies.implementation('io.github.lucasstarsz.fastj:fastj-library:1.7.0-SNAPSHOT-1')
 /* We'll stick with the simplest logging option for now -- you can change it however you need. */
-dependencies.implementation('org.slf4j:slf4j-simple:2.0.0-alpha5')
+dependencies.implementation('org.slf4j:slf4j-simple:2.0.0-alpha7')
 /* The dependency for the Groovy programming language. */
-dependencies.implementation('org.apache.groovy:groovy:4.0.2')
+dependencies.implementation('org.apache.groovy:groovy:4.0.4')
 
 /* Here, we specify where the main entrypoint of the project.
  * Feel free to change this as needed. */
@@ -62,35 +62,43 @@ runtime {
     )
 
     launcher {
-        applicationName = project.name
         noConsole = true
     }
 
     jpackage {
+
         /* Use this to define the path of the icons for your project. */
         def iconPath = 'project-resources/fastj_icon'
         def currentOs = org.gradle.internal.os.OperatingSystem.current()
 
-        installerOptions += [
-                '--description', project.description,
-                '--vendor', project.group,
-                '--app-version', project.version
-        ]
-
-
         if (currentOs.windows) {
-            installerType = 'msi'
             imageOptions += ['--icon', "${iconPath}.ico"]
-            installerOptions += ['--win-per-user-install', '--win-dir-chooser', '--win-shortcut']
         } else if (currentOs.linux) {
-            installerType = 'deb'
             imageOptions += ['--icon', "${iconPath}.png"]
-            installerOptions += ['--linux-shortcut']
         } else if (currentOs.macOsX) {
-            installerType = 'pkg'
             imageOptions += ['--icon', "${iconPath}.icns"]
-            installerOptions += ['--mac-package-name', project.name]
+        }
+
+        /* Comment the line below to create an installer for your application */
+        skipInstaller = true
+
+        if (!skipInstaller) {
+            installerOptions += [
+                    '--description', project.description,
+                    '--vendor', project.group,
+                    '--app-version', project.version
+            ]
+
+            if (currentOs.windows) {
+                installerType = 'msi'
+                installerOptions += ['--win-per-user-install', '--win-dir-chooser', '--win-shortcut']
+            } else if (currentOs.linux) {
+                installerType = 'deb'
+                installerOptions += ['--linux-shortcut']
+            } else if (currentOs.macOsX) {
+                installerType = 'pkg'
+                installerOptions += ['--mac-package-name', project.name]
+            }
         }
     }
 }
-
